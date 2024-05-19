@@ -977,10 +977,18 @@ width:90%;
                 flex-direction: column;
                 align-items: center;
             }
-            .logo,.user_and_basket {
+            .logo {
                 margin-bottom: 0px;
             }
+            .user_and_basket{
+                display:none;
+                z-index: 1;
+                margin-bottom: 0px;
+                background-color: #573b8a;
+                width: 100%;
+            }
             .menu ul {
+                margin-left: -40px;
                 display: flex;
                 flex-direction: column;
                 align-items: center;

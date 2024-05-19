@@ -8,10 +8,12 @@ var but_sap=document.getElementById('but_sap')
 var but_sap1=document.getElementById('but_sap1')
 var menu=document.getElementById('menu')
 var poisk=document.getElementById('poisk')
+var reg=document.getElementById('reg')
 
 bur.addEventListener("click",function(){
-        menu.style.display="block"
-        poisk.style.display="block"
+        menu.style.display="block",
+        poisk.style.display="block",
+        reg.style.display="flex"
     }
 )
 

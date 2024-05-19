@@ -54,7 +54,7 @@
                     </form>
                 </div>
             </div>
-            <div class="user_and_basket">
+            <div class="user_and_basket" id="reg">
                 {% if user.is_authenticated %}
             	<a class="nav-item nav-link" href="{% url 'profile' %}">Профиль</a>
           	    {% else %}
