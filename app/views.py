@@ -14,12 +14,6 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required,permission_required
 from django.contrib.auth import logout
 from django.contrib.auth import authenticate
-def test(request):
-    if request.method == 'POST':
-        message = request.POST['message']
-        response = test_gpt(message)
-        return render(request, 'test.html', {'response': response})
-    return render(request,'test.html')
 
 def index(request):
     kategs=Kategor.objects.all()

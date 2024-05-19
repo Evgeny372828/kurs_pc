@@ -14,7 +14,6 @@ urlpatterns = [
     path('katalog-inform-tovar/<int:pk>/',inform,name='inform'),
     path('new',new),
     path('poisk',sarch,name='search'),
-    path('gpt',test,name='gpt'),
     path('reg',reg,name='reg'),
     path('prof',prof,name='profile'),
     path('login/',LoginUser.as_view(), name='login'),
