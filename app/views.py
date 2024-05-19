@@ -10,7 +10,6 @@ from .forms import SupportForm
 from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.db.models import Q
-from app.gpt_chat import test_gpt
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required,permission_required
 from django.contrib.auth import logout
