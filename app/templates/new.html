@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+{% block main %}
+<div class="new">
+    {%for i in new%}
+    <img src="{{i.img.url}}" alt="">
+    <div class="stat_new">
+    <p>Дата статьи {{i.data}}</p>
+    {{i.text}}
+        </div>
+    {%endfor%}
+</div>
+{% endblock %}

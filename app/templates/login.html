@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+{% block main %}
+<div class="main_log">
+<div class="content-section">
+        <form method="POST" class="form5">
+        {% csrf_token %}
+        <label aria-hidden="true" id="auth">Аутентификация</label>
+        <input type="text" id="user" name="username" required placeholder="Имя пользователя">
+        <input type="password" id="password" name="password" required placeholder="Пароль">
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Войти</button>
+        </div>
+        </form>
+
+    </div>
+    </div>
+{% endblock %}

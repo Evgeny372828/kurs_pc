@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+
+{% block main %}
+<div class="cart_cart">
+<p>Корзина</p>
+</div>
+{% if cart.is_empty %}
+<p>Ваша корзина пуста.</p>
+{% else %}
+
+
+{% for item in cart %}
+<div class="carts">
+    <h1>{{item.tovar.comp}} {{item.tovar.name}}</h1>
+<div class="cart_img">
+    <img src="{{item.tovar.img.url}}" alt="" class="tovar_img">
+    Цена:{{ item.tovar.price }}
+
+</div>
+</div>
+{% endfor %}
+<div class="itog">
+<p>Итого: {{ cart.get_total_price }}</p>
+</div>
+
+
+
+<a href="{% url 'kstslog' %}" class="btn btn-primary">Продолжить покупки</a>
+
+{% endif %}
+
+{% endblock main %}

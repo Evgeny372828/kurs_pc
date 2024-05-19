@@ -1,0 +1,79 @@
+{% extends 'index.html' %}
+
+{% block main %}
+
+<div class="main2">
+    {%for i in tovar%}
+
+    <div class="tv_vivod">
+        <h1>{{i.comp}} {{i.name}}</h1>
+        <div class="cont">
+            <img src="{{i.img.url}}" alt="" class="tovar_img">
+
+        <div class="text_vivod">
+            <div class="a">
+            <p>Производитель</p>
+            {%for a in i.pod_kat.all%}
+                <p class="e">{{a.name}}</p>
+            {%endfor%}
+            <p>{{i.price}} ₽</p>
+
+                 <form action="{% url 'cart:cart_add' pk %}" method="post">
+                     {% csrf_token %}
+                     <input type="submit" value="Добавить в корзину" class="cart">
+                 </form>
+
+            </div>
+            <div class="stat">
+                <p>{{i.comp}}</p>
+                {%for a in i.pod_kat.all%}
+                    {%for b in a.stat.all%}
+                        <p>{{b.name}}</p>
+                    {%endfor%}
+                {%endfor%}
+            </div>
+
+        </div>
+
+        </div>
+    </div>
+    {%endfor%}
+    </div>
+
+{% if user.is_authenticated %}
+<form method="post" name="modal2" class="form2" id="form1" action="{% url 'inform' pk %}">
+        {%csrf_token%}
+            <div class="namesur">
+                <div class="rating-area">
+	            <input type="radio" id="star-5" name="rating" value="5">
+	            <label for="star-5" title="Оценка «5»"></label>
+	            <input type="radio" id="star-4" name="rating" value="4">
+	            <label for="star-4" title="Оценка «4»"></label>
+	            <input type="radio" id="star-3" name="rating" value="3">
+	            <label for="star-3" title="Оценка «3»"></label>
+	            <input type="radio" id="star-2" name="rating" value="2">
+	            <label for="star-2" title="Оценка «2»"></label>
+	            <input type="radio" id="star-1" name="rating" value="1">
+	            <label for="star-1" title="Оценка «1»"></label>
+         </div>
+                <input name="content" type="text" class="in2" placeholder="Введите комментарий">
+            </div>
+
+
+        <button class="koment" id="loadMore">Сохранить</button>
+    </form>
+{% else %}
+<div class="not_com">
+    <p>Пожайлуста <a href="{% url 'reg' %}" class="a_com">Регистрация/</a><a href="{%url 'login'%}" class="a_com">Войти</a> Пожалуйста, войдите или зарегистрируйтесь, чтобы написать отзыв</p>
+    </div>
+{% endif %}
+
+{% for comment in tov.reviews.all %}
+<div class="otz" id="reviews">
+    <div class="pust"></div>
+    <div class="name_com"><div class="name"><p>{{ comment.user }}</p> <p>Оценка:{{comment.rating}}</p></div> <div class="coment">Коментарий:{{ comment.content }}</div></div>
+    </div>
+    <div class="pust2"></div>
+    {% endfor %}
+
+{% endblock %}

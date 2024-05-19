@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+{% block main %}
+<div class="main_vivod">
+{%for i in tovar%}
+    <div class="tovars">
+        <div class="tv_img">
+
+            <img src="{{i.img.url}}" alt="" class="tovar_img">
+
+        </div>
+        <div class="tv_text">
+            <h3>{{i.comp}} <a href="{{i.get_absolute_url}}">{{i.name}}</a></h3>
+            <h2 class="price">{{i.price}}</h2>
+<!--             -->
+        </div>
+    </div>
+    {%endfor%}
+</div>
+{% endblock %}

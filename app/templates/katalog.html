@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+{% block main %}
+<div class="main_katal">
+<div class="kontent">
+    {%for i in kateg%}
+ <div class="block2">
+     <img src="{{i.img.url}}" class="katal">
+      <a href="{{i.id}}" id="a_kat">{{i.name}}</a>
+ </div>
+     {%endfor %}
+</div>
+    </div>
+{% endblock %}
