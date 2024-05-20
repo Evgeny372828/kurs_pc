@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 class Kategor(models.Model):
     name=models.TextField()
     img=models.ImageField()
@@ -77,21 +78,24 @@ class Tovar(models.Model):
 
     def get_absolute_url(self):
         return f'/katalog-inform-tovar/{self.id}/'
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    name=models.CharField(max_length=100)
-    image = models.ImageField(upload_to='profil',default='profil/default.jpg')
+    name = models.CharField(max_length=100)
+    image = models.ImageField( upload_to='static/images',default='default.jpg',)
 
     def __str__(self):
-        return f'{self.user.username} Profile'
+        return f'{self.user.username}\'s profile'
 
     class Meta:
         verbose_name_plural = "Профиль"
         verbose_name = "Профили"
 
-    def __str__(self):
-        return self.user
+def create_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
 
+post_save.connect(create_profile, sender=User, dispatch_uid='save_new_user_profile')
 class Koment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     content=models.TextField()

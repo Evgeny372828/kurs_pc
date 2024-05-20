@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm
 
-from app.models import Koment,Submodal
+from app.models import *
 
 
 class Register(UserCreationForm):
@@ -22,4 +22,9 @@ class SupportForm(ModelForm):
      class Meta:
          model=Submodal
          fields = ['name','email','message']
+
+class AvatarForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('image',)
 

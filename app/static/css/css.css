@@ -356,6 +356,24 @@ color:black;
 .stat{
     margin: 0 15px;
 }
+.def{
+    width:100px;
+    height:100px;
+}
+.imgform label{
+    display:none;
+}
+.imgform input{
+    height:30px;
+    width: 125px;
+    color:#573b8a;
+    background:#573b8a;
+    padding: 4%;
+}
+.imgbut{
+    width:130px;
+    height:30px;
+}
 .tv_img {
   position: relative;
   width: 100%;

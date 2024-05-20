@@ -140,9 +140,24 @@ def logout_view(request):
 
 @login_required
 def prof(request):
-    img=Profile.objects.all()
+    try:
+        profile = request.user.profile
+    except Profile.DoesNotExist:
+        profile = None
 
-    return render(request, 'profil.html', {'user': request.user,'img':img})
+    if request.method == 'POST':
+        form = AvatarForm(request.POST, request.FILES)
+        if form.is_valid():
+            if profile:
+                profile.image = form.cleaned_data['image']
+                profile.save()
+            else:
+                new_profile = Profile(user=request.user, image=form.cleaned_data['image'])
+                new_profile.save()
+            return redirect('glavn')
+    else:
+        form = AvatarForm()
+    return render(request, 'profil.html', {'user': request.user,'form': form})
 
 def detail(request,id,slug):
     cart_form = AddProductForm()

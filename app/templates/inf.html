@@ -71,6 +71,7 @@
 {% for comment in tov.reviews.all %}
 <div class="otz" id="reviews">
     <div class="pust"></div>
+    <img src="{{ comment.user.profile.image.url  }}" alt="" class="def">
     <div class="name_com"><div class="name"><p>{{ comment.user }}</p> <p>Оценка:{{comment.rating}}</p></div> <div class="coment">Коментарий:{{ comment.content }}</div></div>
     </div>
     <div class="pust2"></div>
